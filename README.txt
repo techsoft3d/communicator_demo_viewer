@@ -14,16 +14,16 @@ https://docs.npmjs.com/getting-started/fixing-npm-permissions
 
 1. Navigate to the communicator_demo_viewer folder and run: npm install
 
-2. Set up the communicator binaries by using the utility script:  node dev/set_communicator_package.js /path/to/your/HOOPS_Communicator_2017_SP2_U1
-	Note: This has been tested up to HC 2019 SP1
+2. Set up the communicator binaries by using the utility script:  node dev/set_communicator_package.js /path/to/your/HOOPS_Communicator_2019_SP2_U1
+	Note: This has been tested up to HC 2019 SP2 U1
 
-3. Add your HC license string to the bottom of src/Index.js where it says "Add your license here".  You'll also need to add it to both of the viewer settings files under the bin directory.
+3. Add your HC license string to the bottom of src/Index.js, bin/viewer_settings_csr.xml and bin/viewer_settings_ssr.xml.
 	
 4. You can start the application by writing: npm start
 
 5. You can run the tests with the following command: npm test
 	
 Notes:
-	Javascript compilation is currently disabled due to the fact that hoops_web_viewer.js too big and causes the package process to fail.  There are some ways we can get around this if we actually invest resources into this application.
+	Javascript compilation is currently disabled due to the fact that hoops_web_viewer.js too big and causes the package process to fail.  There are some ways we can get around this and it will be addressed in a future release.
 
 	You can use any development environment you'd like, but there are build/debug/test targets for VS Code and you can use the perforce plugin for MS Code to make it easier to develop with P4.
