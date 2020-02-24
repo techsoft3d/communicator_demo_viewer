@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hoops Communicator Desktop</title>
+  <script type="text/javascript" src="Index.js"></script>
+
+  <!-- Insert this line above script imports  -->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script type="text/javascript" src="default_viewer/js/hoops_web_viewer.js"></script>
+  <script type="text/javascript" src="lib/jquery-3.1.1.slim.min.js"></script>
+  <script type="text/javascript" src="lib/popper.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+  <script type="text/javascript" src="lib/tmpl.min.js"></script>
+
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+
+  <script type="text/javascript">
+      $(document).ready(initPage);
+      
+      document.addEventListener('drop', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    
+        for (let f of e.dataTransfer.files) {
+            console.log('File(s) you dragged here: ', f.path)
+            processFile( f.path, "client");
+        }
+    });
+
+    document.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+  </script>
+
+<script type="text/x-tmpl" id="tabHeaderTemplate">
+<li class="nav-item">
+    <a class="nav-link" id="{%= o.tabId %}" data-toggle="tab" href="#{%= o.tabContent %}" role="tab" aria-controls="{%= o.tabContent %}" >
+    <button class="close" type="button">×</button>{%= o.tabName %}
+    </a>
+</li>
+</script>
+
+<script type="text/x-tmpl" id="tabContentTemplate">
+    <div class="tab-pane m-0 w-100 h-100" id="{%= o.tabContent %}" role="tabpanel" aria-labelledby="{%= o.tabId %}">
+        <table class="h-100 w-100 text-center"><tr><td><img id="loading-icon" src="images/{%= o.actionName %}.gif" /></td></tr></table>
+    </div>
+</script>
+
+<body>
+<div class="top-panel w-100" role="tabpanel" id="tab-panel">
+    <ul class="nav nav-tabs sticky-top" id="tab-list" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">Home</a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content h-100 w-100" id="tab-content">
+    <div role="tabpanel" class="tab-pane show active m-0 w-100 h-100" id="home" aria-labelledby="home-tab" aria-expanded="true">
+        <table class="h-100 w-100 text-center"><tr><td><img src="images/ts3d.png" /></td></tr></table>
+    </div>
+</div>
+
+<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Info</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
