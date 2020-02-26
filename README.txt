@@ -22,6 +22,10 @@ https://docs.npmjs.com/getting-started/fixing-npm-permissions
 4. You can start the application by writing: npm start
 
 5. You can run the tests with the following command: npm test
+
+Building:
+npm install electron-packager -g
+electron-packager .
 	
 Notes:
 	Javascript compilation is currently disabled due to the fact that hoops_web_viewer.js too big and causes the package process to fail.  There are some ways we can get around this and it will be addressed in a future release.
