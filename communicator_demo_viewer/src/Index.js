@@ -6,7 +6,7 @@ const child_process = require('child_process');
 const remote = electron.remote;
 
 const path = require('path');
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 
 var viewers = {};
 var ApplicationConfig = null;
