@@ -3,8 +3,5 @@
 		{
 			"path": "communicator_demo_viewer"
 		}
-	],
-	"settings": {
-		"perforce.client": "rob_demos_linux"
-	}
+	]
 }
