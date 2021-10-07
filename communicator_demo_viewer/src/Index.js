@@ -446,12 +446,10 @@ function initConfig(baseDir){
 
     return {
         SC_SERVER_APP: path.join(binDir, serverBinary ),
-        SETTINGS_FILE_CSR: path.join(binDir, "viewer_settings_csr.xml"),
-        SETTINGS_FILE_SSR: path.join(binDir, "viewer_settings_ssr.xml"),
         CONVERTER: path.join(binDir, convertBinary),
         MODEL_REPO: modelRepo,
         HTML_TEMPLATE: path.join(binDir, "HOOPSCommunicatorTemplate.html"),
-
+        
         LICENSE: "Add license here"
     }
 }
