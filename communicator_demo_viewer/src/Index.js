@@ -362,7 +362,8 @@ function convertFile(filePath, modelName){
             "--license", ApplicationConfig.LICENSE,
             "--input", filePath,
             "--output_sc", outputPath,
-            "--sc_compress_models", "true"
+            "--sc_create_scz", "true",
+            "--sc_compress_scz", "true"
         ];
 
         let converter = child_process.spawn(ApplicationConfig.CONVERTER, args);
