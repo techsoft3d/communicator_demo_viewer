@@ -299,21 +299,20 @@ function addTab(label, tabId, action) {
     return tabContent;
 }
 
-var scPort = 55555;
-var httpPort = 12345;
+var scPort = 11000;
 
 function spawnViewer(modelDir, modelName, tabId, tabContentId, viewerId, rendererType){
     let streamcachePort = scPort++;
-    let webPort = httpPort++;
 
-    let settings_file_path = (rendererType === "server") ? ApplicationConfig.SETTINGS_FILE_SSR : ApplicationConfig.SETTINGS_FILE_CSR;
+    let ssrEnabled = (rendererType === "client") ? false : true;
 
     let args = [
-        "--scserver.modelsearchdirectories", modelDir,
-        "--scserver.port", streamcachePort.toString(),
-        "--scserver.renderinglocation", rendererType,
-        "--scserverhost.http.port", webPort.toString(),
-        "--settingsfile", settings_file_path
+        "--sc-port", streamcachePort.toString(),
+        "--id", viewerId.toString(),
+        "--csr", (!ssrEnabled).toString(),
+        "--ssr", ssrEnabled.toString(),
+        "--model-search-directories", modelDir,
+        "--license", ApplicationConfig.LICENSE 
     ];
 
     let scServer = child_process.spawn(ApplicationConfig.SC_SERVER_APP, args);
@@ -431,7 +430,7 @@ function exportToHTML( fileName, modelName ){
 function initConfig(baseDir){
     let modelRepo = path.join(os.homedir(), "CommunicatorModels");
     let isWin = /^win/.test(process.platform);
-    let serverBinary = (isWin) ? "sc_server_app.exe" : "sc_server_app";
+    let serverBinary = (isWin) ? "ts3d_sc_server.exe" : "ts3d_sc_server";
     let convertBinary = (isWin) ? "converter.exe" : "converter";
 
     if( isWin ){
