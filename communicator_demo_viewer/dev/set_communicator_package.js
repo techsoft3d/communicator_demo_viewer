@@ -1,13 +1,31 @@
 const fs = require('fs-extra')
 const path = require('path');
+const { exit } = require('process');
 
 if (process.argv.length < 3 || process.argv[2] === ""){
 	console.log("Please specify an absolute path to a HOOPS Communicator Package.");
 	process.exit(1);
 }
 
-const platform = ( /^win/.test(process.platform) ) ? 'Windows' : 'Linux';
-const bin_dir = (platform == 'Windows') ? 'win64_v140' : 'linux64';
+let platform;
+let bin_dir;
+switch( process.platform) {
+	case "linux":
+		platform = "Linux";
+		bin_dir = "linux64"
+		break;
+	case "darwin":
+		platform = "MacOS";
+		bin_dir = "macos";
+		break;
+	case "win32":
+		platform = "Windows";	
+		bin_dir = "win64_v140";
+		break;
+	default:
+		console.log("Error: Your platform is not supported");
+		exit();
+}
 
 const src_package_path = process.argv[2];
 const dest_package_path = path.join(__dirname, "..", "bin");
