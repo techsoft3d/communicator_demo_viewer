@@ -17,7 +17,16 @@ var ApplicationConfig = null;
 //ipc.on( remote.getGlobal('messages').openFileMessage, function(event, paths) {
 ipc.on( remote.getGlobal('messages').openFileMessage, function(event, paths, rendererType)
  {
-    if( paths && paths.length > 0 && fs.existsSync(paths[0]) )
+    if (rendererType === "server" && process.platform === "darwin") {
+        $('#info-modal').on('show.bs.modal', function (event) 
+        {
+            let modal = $(this);
+            modal.find('.modal-body').html("SSR is not supported on MacOS at this time. Please use CSR.");
+          });
+
+        $('#info-modal').modal('show');
+    }
+    else if( paths && paths.length > 0 && fs.existsSync(paths[0]) )
     {
         processFile( paths[0], rendererType );
     }
