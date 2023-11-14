@@ -1,1 +1,0 @@
-If you didn't run the setup script in the top level dev folder, do so to copy the correct web viewer javascript file here.

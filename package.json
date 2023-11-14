@@ -1,0 +1,22 @@
+{
+  "name": "communicator_electron",
+  "version": "1.0.0",
+  "description": "Version 2 of electron-HC app.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node node_modules/mocha/bin/mocha tests/tests.js"
+  },
+  "author": "Rob Tadlock",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^27.0.4"
+  },
+  "dependencies": {
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.2.0",
+    "spectron": "^19.0.0",
+    "uuidv4": "^6.2.13"
+  }
+}
